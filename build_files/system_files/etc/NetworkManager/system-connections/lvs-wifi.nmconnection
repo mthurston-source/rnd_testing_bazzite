@@ -1,0 +1,20 @@
+[connection]
+id=LVS WiFi
+type=wifi
+autoconnect=true
+interface-name=
+
+[wifi]
+mode=infrastructure
+ssid=PrivateCUK
+
+[wifi-security]
+key-mgmt=wpa-psk
+psk=su$Reqeda6Us
+
+[ipv4]
+method=auto
+
+[ipv6]
+method=auto
+addr-gen-mode=default

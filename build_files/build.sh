@@ -32,5 +32,12 @@ systemctl enable podman.socket
 ### Copy custom system files
 cp -r /ctx/system_files/. /
 
+### Fix NetworkManager connection permissions
+if [ -d /etc/NetworkManager/system-connections ]; then
+    chmod 700 /etc/NetworkManager/system-connections
+    chmod 600 /etc/NetworkManager/system-connections/*.nmconnection
+    chown root:root /etc/NetworkManager/system-connections/*.nmconnection
+fi
+
 chmod +x /usr/local/bin/lvs-firstboot-setup
 systemctl enable lvs-firstboot-setup.service
