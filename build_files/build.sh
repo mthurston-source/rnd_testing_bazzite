@@ -25,6 +25,14 @@ dnf5 install -y \
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
 
+### Add Flathub and install Flatpaks
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+flatpak install -y --noninteractive --system flathub \
+    io.github.ilya_zlobintsev.LACT \
+    io.missioncenter.MissionCenter \
+    org.freedesktop.Platform.VAAPI.Intel
+
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
@@ -41,3 +49,10 @@ fi
 
 chmod +x /usr/libexec/lvs/lvs-firstboot-setup
 systemctl enable lvs-firstboot-setup.service
+
+### Disable Steam autostart
+rm -f /etc/xdg/autostart/steam.desktop
+rm -f /etc/skel/.config/autostart/steam.desktop
+
+### Autorun update script at login
+chmod +x /usr/libexec/lvs/lvs-login-preflight

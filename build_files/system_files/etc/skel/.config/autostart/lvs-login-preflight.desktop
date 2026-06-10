@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=LVS Login Preflight
+Comment=Checks network, time sync, and update status before validation
+Exec=konsole --hold -e /usr/libexec/lvs/lvs-login-preflight
+Terminal=false
+X-KDE-autostart-after=panel
