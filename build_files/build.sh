@@ -30,4 +30,4 @@ dnf5 install -y \
 systemctl enable podman.socket
 
 ### Copy custom system files
-cp -r /ctx/systemfiles/* /
+cp -r /ctx/system_files/. /
