@@ -30,7 +30,7 @@ dnf5 install -y \
 systemctl enable podman.socket
 
 ### Copy custom system files
-cp -r /ctx/system_files/. /
+cp -a /ctx/system_files/. /
 
 ### Fix NetworkManager connection permissions
 if [ -d /etc/NetworkManager/system-connections ]; then
@@ -39,5 +39,5 @@ if [ -d /etc/NetworkManager/system-connections ]; then
     chown root:root /etc/NetworkManager/system-connections/*.nmconnection
 fi
 
-chmod +x /usr/local/bin/lvs-firstboot-setup
+chmod +x /usr/libexec/lvs/lvs-firstboot-setup
 systemctl enable lvs-firstboot-setup.service
