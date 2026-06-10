@@ -30,8 +30,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 flatpak install -y --noninteractive --system flathub \
     io.github.ilya_zlobintsev.LACT \
-    io.missioncenter.MissionCenter \
-    org.freedesktop.Platform.VAAPI.Intel
+    io.missioncenter.MissionCenter
 
 #### Example for enabling a System Unit File
 
