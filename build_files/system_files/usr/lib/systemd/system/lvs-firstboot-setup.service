@@ -1,0 +1,10 @@
+[Unit]
+Description=Linux Validation Suite first boot setup
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/lvs-firstboot-setup
+
+[Install]
+WantedBy=multi-user.target

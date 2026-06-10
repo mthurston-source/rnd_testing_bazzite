@@ -31,3 +31,6 @@ systemctl enable podman.socket
 
 ### Copy custom system files
 cp -r /ctx/system_files/. /
+
+chmod +x /usr/local/bin/lvs-firstboot-setup
+systemctl enable lvs-firstboot-setup.service
