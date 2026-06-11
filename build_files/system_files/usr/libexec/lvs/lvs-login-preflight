@@ -15,10 +15,9 @@ echo "=============================================="
 echo " Linux Validation Drive Initializing"
 echo "=============================================="
 echo
-echo "Please wait. Checking network, time sync, and update status..."
+echo "Please wait. Checking network, time/date sync, and update status..."
 echo
 
-# Prevent multiple instances.
 LOCK="/run/lvs-login-preflight.lock"
 exec 9>"$LOCK"
 if ! flock -n 9; then
