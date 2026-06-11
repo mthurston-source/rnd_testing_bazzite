@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 set -u
 
-LOG="/var/log/lvs-login-preflight.log"
-STAMP="/var/lib/lvs/last-successful-update"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/lvs"
+RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp}"
+LOG="$STATE_DIR/lvs-login-preflight.log"
+STAMP="$STATE_DIR/last-successful-update"
+LOCK="$RUNTIME_DIR/lvs-login-preflight.lock"
+WALLPAPER="/usr/share/backgrounds/lvs/lvs-background.jpg"
+
 MAX_AGE_SECONDS=$((14 * 24 * 60 * 60))
 NETWORK_TIMEOUT=90
 TIME_TIMEOUT=60
 
-mkdir -p /var/lib/lvs
+mkdir -p "$STATE_DIR"
 
 exec > >(tee -a "$LOG") 2>&1
 
@@ -15,10 +20,17 @@ echo "=============================================="
 echo " Linux Validation Drive Initializing"
 echo "=============================================="
 echo
+echo "[0/3] Applying desktop defaults..."
+
+if [ -f "$WALLPAPER" ] && command -v plasma-apply-wallpaperimage >/dev/null 2>&1; then
+    plasma-apply-wallpaperimage "$WALLPAPER" >/dev/null 2>&1 || true
+fi
+
+echo "Desktop defaults applied."
+echo
 echo "Please wait. Checking network, time/date sync, and update status..."
 echo
 
-LOCK="/run/lvs-login-preflight.lock"
 exec 9>"$LOCK"
 if ! flock -n 9; then
     echo "Another preflight is already running. Closing in 10 seconds..."
