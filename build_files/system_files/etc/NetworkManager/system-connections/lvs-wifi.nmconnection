@@ -2,7 +2,6 @@
 id=LVS WiFi
 type=wifi
 autoconnect=true
-interface-name=
 
 [wifi]
 mode=infrastructure

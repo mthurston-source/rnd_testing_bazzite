@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Plasma Welcome
+Exec=plasma-welcome
+Hidden=true
