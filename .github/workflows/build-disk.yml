@@ -33,7 +33,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        disk-type: ["raw", "qcow2", "anaconda-iso"]
+        disk-type: ["raw", "qcow2"]
     permissions:
       contents: read
       packages: read
