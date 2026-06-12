@@ -50,8 +50,8 @@ chmod +x /usr/libexec/lvs/lvs-firstboot-setup
 systemctl enable lvs-firstboot-setup.service
 
 ### Disable KDE first-login setup wizard
-systemctl disable plasma-setup.service || true
-rm -f /etc/systemd/system/multi-user.target.wants/plasma-setup.service || true
+# systemctl disable plasma-setup.service || true
+# rm -f /etc/systemd/system/multi-user.target.wants/plasma-setup.service || true
 
 ### Disable Steam autostart
 rm -f /etc/xdg/autostart/steam.desktop
